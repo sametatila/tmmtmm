@@ -1,5 +1,5 @@
 from selenium import webdriver
-import time
+import time, requests
 
 #Declare some variables
 login_url = "https://www.threadless.com/login/"
