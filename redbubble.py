@@ -1,7 +1,6 @@
-from selenium import *
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait 
 import time
@@ -37,20 +36,25 @@ driver = webdriver.Chrome('chromedriver.exe')
 ###Start
 #Login Page
 driver.get (login_url)
-time.sleep(8)
+time.sleep(5)
 
 #Accept Cuki
 driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
 
 #Login Info
 driver.find_element_by_xpath('//*[@id="ReduxFormInput1"]').send_keys(username)
-time.sleep(5)
+time.sleep(2)
 driver.find_element_by_xpath('//*[@id="ReduxFormInput2"]').send_keys(password)
-time.sleep(5)
+time.sleep(2)
 
 #Login Button
 driver.find_element_by_xpath('//*[@id="RB_React_Component_LoginFormContainer_0"]/div/form/span/button').click()
-time.sleep(60)
+time.sleep(2)
+try:  
+    while True:
+        driver.find_element_by_xpath('//*[@id="app"]/div[1]/div/div[2]/div/div/nav/ul/li[11]/a').click()
+finally:
+    time.sleep(10)
 ###End
 
 ###Start
