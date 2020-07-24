@@ -44,13 +44,12 @@ driver.find_element_by_name("upload").send_keys(design_path)
 time.sleep(1)
 
 #Backround_Color
-#driver.find_element_by_xpath('//*[@id="title_wrapper"]/section[1]/div[2]/div[1]/div/div/div[1]').click()
-#time.sleep(1)
+driver.find_element_by_class_name("sp-preview").click()
+time.sleep(1)
 #Pick Color
-#driver.find_element_by_xpath('/html/body/div[11]/div[1]/div[1]').send_keys(bg_color)
-#time.sleep(1)
-#Select Color Button
-#driver.find_element_by_xpath('/html/body/div[6]/div[2]/main/h1').click()
+driver.find_element_by_class_name("sp-input").clear()
+driver.find_element_by_class_name("sp-input").send_keys(bg_color)
+time.sleep(1)
 
 #Mature Content
 driver.find_element_by_xpath('//*[@id="id_nsfw_1"]').click()
