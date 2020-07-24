@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 import time
 
 
-# Declare some variables
+#Declare some variables
 login_url = "https://www.redbubble.com/auth/login"
 username = "sametatila@gmail.com"
 password = "Linkin.123"
@@ -18,7 +18,7 @@ design_path = "C:\ytw/az.png"
 bg_color = "#000000"
 
 
-        
+
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
 options.add_argument('--headless')
@@ -26,7 +26,7 @@ options.add_argument('--no-sandbox')
 options.add_argument(f'user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36')
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
-driver = webdriver.Chrome(options=options, executable_path=r'chromedriver.exe')
+#driver = webdriver.Chrome(options=options, executable_path=r'chromedriver.exe')
 
 
 #Run Chromium
@@ -36,30 +36,31 @@ driver = webdriver.Chrome('chromedriver.exe')
 ###Start
 #Login Page
 driver.get (login_url)
-time.sleep(5)
+time.sleep(10)
 
 #Accept Cuki
 driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
 
 #Login Info
 driver.find_element_by_xpath('//*[@id="ReduxFormInput1"]').send_keys(username)
-time.sleep(2)
+time.sleep(10)
 driver.find_element_by_xpath('//*[@id="ReduxFormInput2"]').send_keys(password)
-time.sleep(2)
+time.sleep(10)
 
 #Login Button
 driver.find_element_by_xpath('//*[@id="RB_React_Component_LoginFormContainer_0"]/div/form/span/button').click()
-time.sleep(2)
+time.sleep(10)
 
-while False:
-    driver.find_element_by_xpath('//*[@id="app"]/div[1]/div/div[2]/div/div/nav/ul/li[11]/a').click()
-    time.sleep(10)
 ###End
 
 ###Start
 #Product Create Page
-driver.get(create_url)
-time.sleep(3)
+deis = driver.find_element_by_xpath('//*[@id="RB_React_Component_LoginFormContainer_0"]/div/form/p[2]/span').click()
+while deis == True:
+    time.sleep(10)
+    driver.get(create_url)
+    time.sleep(3)
+
 
 #Product Title
 driver.find_element_by_xpath('//*[@id="work_title_en"]').send_keys(product_title)
