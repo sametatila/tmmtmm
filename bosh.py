@@ -1,3 +1,8 @@
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait 
+
 
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
