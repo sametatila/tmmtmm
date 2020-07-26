@@ -22,7 +22,7 @@ option.add_argument('--disable-extensions')
 option.add_argument('--profile-directory=Default')
 option.add_argument("--incognito")
 option.add_argument("--disable-plugins-discovery");
-option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+#option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 option.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
 option.add_experimental_option("excludeSwitches", ["ignore-certificate-errors", "safebrowsing-disable-download-protection", "safebrowsing-disable-auto-update", "disable-client-side-phishing-detection"])
 
