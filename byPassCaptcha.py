@@ -35,7 +35,7 @@ def audioToText(mp3Path):
 
     # Audio to text is processing
     time.sleep(audioToTextDelay)
-
+#AHHHHHHHHHHHHHHHHHHHHHHANDA BURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div/div/dialog').find_elements_by_tag_name('dd')
     result = " ".join( [ each.text for each in text ] )
 
