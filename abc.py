@@ -29,8 +29,7 @@ def audioToText(mp3Path):
 
     # Audio to text is processing
     time.sleep(audioToTextDelay)
-    text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div').find_elements_by_tag_name('dd')
-    result = " ".join( [ each.text for each in text ] )
+    result = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div').text
 
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
@@ -79,7 +78,7 @@ driver.get(login_url)
 time.sleep(5)
 
 #Accept Cuki
-driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
+#driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
 
 #Login Info
 driver.find_element_by_xpath('//*[@id="ReduxFormInput1"]').send_keys(username1)
