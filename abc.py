@@ -62,11 +62,12 @@ options.add_argument('--profile-directory=Default')
 options.add_argument("--incognito")
 options.add_argument("--disable-plugins-discovery");
 options.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
+#options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 #options.add_argument("--start-maximized")
 options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors", "safebrowsing-disable-download-protection", "safebrowsing-disable-auto-update", "disable-client-side-phishing-detection"])
 driver = webdriver.Chrome(chrome_options=options, executable_path=r'chromedriver.exe')
 driver.delete_all_cookies()
-driver.set_window_size(900,1000)
+driver.set_window_size(1100,1000)
 driver.set_window_position(0,0)
 
 #Run Chromium
