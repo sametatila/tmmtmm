@@ -29,5 +29,5 @@ btn.send_keys('/home/synoriq/Desktop/fiverr/1.wav')
 # Audio to text is processing
 time.sleep(delayTime)
 
-text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div/div/dialog').find_elements_by_tag_name('dd')
+text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div').find_elements_by_tag_name('dd')
 result = " ".join( [ each.text for each in text ] )

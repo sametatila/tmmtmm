@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 import os, sys
 import time,requests
@@ -17,8 +18,14 @@ googleIBMLink = 'https://speech-to-text-demo.ng.bluemix.net/'
 option = webdriver.ChromeOptions()
 option.add_argument('--disable-notifications')
 option.add_argument("--mute-audio")
-# option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+option.add_argument('--disable-extensions')
+option.add_argument('--profile-directory=Default')
+option.add_argument("--incognito")
+option.add_argument("--disable-plugins-discovery");
+option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 option.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
+option.add_experimental_option("excludeSwitches", ["ignore-certificate-errors", "safebrowsing-disable-download-protection", "safebrowsing-disable-auto-update", "disable-client-side-phishing-detection"])
+
 
 def audioToText(mp3Path):
 
@@ -36,7 +43,7 @@ def audioToText(mp3Path):
     # Audio to text is processing
     time.sleep(audioToTextDelay)
 #AHHHHHHHHHHHHHHHHHHHHHHANDA BURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div/div/dialog').find_elements_by_tag_name('dd')
+    text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div').find_elements_by_tag_name('dd')
     result = " ".join( [ each.text for each in text ] )
 
     driver.close()

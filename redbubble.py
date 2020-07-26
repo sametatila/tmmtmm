@@ -6,7 +6,7 @@ import time
 
 #Declare some variables
 login_url = "https://www.redbubble.com/auth/login"
-username1 = "sametatila@gmail.com"
+username1 = "linkinqark1000@gmail.com"
 password = "Linkin.123"
 create_url = "https://www.redbubble.com/portfolio/images/53012017-the-cat-looking-for-the-future/duplicate"
 product_title = "Oha amk!"
