@@ -95,9 +95,9 @@ time.sleep(3)
 
 #Gerizekali bölüm
 
-googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
-outeriframe = googleClass.find_element_by_tag_name('iframe')
-outeriframe.click()
+#googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
+#outeriframe = googleClass.find_element_by_tag_name('iframe')
+#outeriframe.click()
 
 allIframesLen = driver.find_elements_by_tag_name('iframe')
 audioBtnFound = False
