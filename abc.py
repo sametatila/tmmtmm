@@ -64,7 +64,7 @@ options.add_argument("--disable-plugins-discovery");
 options.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
 #options.add_argument("--start-maximized")
 options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors", "safebrowsing-disable-download-protection", "safebrowsing-disable-auto-update", "disable-client-side-phishing-detection"])
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options, executable_path=r'chromedriver.exe')
+driver = webdriver.Chrome(chrome_options=options, executable_path=r'chromedriver.exe')
 driver.delete_all_cookies()
 driver.set_window_size(900,1000)
 driver.set_window_position(0,0)
@@ -75,20 +75,20 @@ driver.set_window_position(0,0)
 ###Start
 #Login Page
 driver.get(login_url)
-time.sleep(10)
+time.sleep(5)
 
 #Accept Cuki
 driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
 
 #Login Info
 driver.find_element_by_xpath('//*[@id="ReduxFormInput1"]').send_keys(username1)
-time.sleep(5)
+time.sleep(3)
 driver.find_element_by_xpath('//*[@id="ReduxFormInput2"]').send_keys(password)
-time.sleep(5)
+time.sleep(3)
 
 #Login Button
 driver.find_element_by_xpath('//*[@id="RB_React_Component_LoginFormContainer_0"]/div/form/span/button').click()
-time.sleep(60)
+time.sleep(3)
 
 
 
