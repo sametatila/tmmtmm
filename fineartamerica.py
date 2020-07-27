@@ -89,20 +89,3 @@ time.sleep(1)
 driver.find_element_by_xpath('//*[@id="submitbottomdiv[5f1f09c9e1f9a]"]/a').click()
 time.sleep(30)
 
-
-
-
-
-
-
-
-
-
-#Success
-try:
-    element_present = EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[1]/span'))
-    WebDriverWait(driver, delayTime).until(element_present)
-finally:
-    print(element_present)
-    #driver.quit()
-

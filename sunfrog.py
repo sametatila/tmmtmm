@@ -45,17 +45,15 @@ def saveFile(content,filename):
 
 
 #Normal variables
-login_url = "https://teespring.com/login"
+login_url = "https://manager.sunfrogshirts.com/index.cfm"
 username1 = "sametatila@gmail.com"
 password = "Linkin.123"
-create_url = "https://teespring.com/design-launcher/design/5d79cc90-8310-4009-bfc9-ff2c20a8ea2d?duplicate=the-cat-looking-for-the-fut208"
+create_url = "https://manager.sunfrogshirts.com/Single-Upload/"
 product_title = "Oha amk!"
 tags = "asd,asda,asdsad"
 description = "asdfsadfsdfsdfdf"
-product_url = "oha-amk"
 design_path = "C:\ytw/az.png"
 bg_color = "#000000"
-
 
 #Run Chromium
 options = Options()
@@ -69,9 +67,9 @@ driver.get(login_url)
 time.sleep(5)
 
 #Login Info
-driver.find_element_by_xpath('//*[@id="sessions_new"]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div/div[1]/input').send_keys(username1)
+driver.find_element_by_xpath('//*[@id="exampleInputEmail1"]').send_keys(username1)
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="sessions_new"]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div/div[2]/input').send_keys(password)
+driver.find_element_by_xpath('//*[@id="loginform"]/div[2]/div/input').send_keys(password)
 time.sleep(3)
 
 
@@ -131,42 +129,56 @@ else:
 
 
 #Login Button
-driver.find_element_by_xpath('//*[@id="sessions_new"]/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/form/div/input').click()
-time.sleep(5)
+driver.find_element_by_xpath('//*[@id="loginform"]/div[4]/div/button').click()
+time.sleep(3)
 ###End
+
 
 ###Start
 #Product Create Page   
 driver.get(create_url)
-time.sleep(5)
+time.sleep(3)
 
-#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-#Design Upload
-driver.find_element_by_xpath('//*[@id="app"]/div/div/div[3]/div[2]/div/section[1]/div[3]/span/button/span').send_keys(design_path)
+#Design Path
+driver.find_element_by_xpath('//*[@id="frontImageDrop"]/div').send_keys(design_path)
 time.sleep(10)
 
-#First Continue Button
-driver.find_element_by_xpath('//*[@id="app"]/div/div/div[3]/div[3]/div/button[2]/span').click()
-time.sleep(5)
+#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+#Select 5 Color
 
-#Second Continue Button
-driver.find_element_by_xpath('//*[@id="app"]/div/div/div[3]/div[3]/div/button[2]/span').click()
-time.sleep(5)
+
+
+#Select All Button
+driver.find_element_by_xpath('//*[@id="selectAllTypes"]').click()
+time.sleep(2)
+
+#Then Save Button
+driver.find_element_by_xpath('//*[@id="saveAllTypes"]').click()
+time.sleep(2)
 
 #Product Title
-driver.find_element_by_xpath('//*[@id="title"]').clear()
-driver.find_element_by_xpath('//*[@id="title"]').send_keys(product_title)
+driver.find_element_by_xpath('//*[@id="campaignTitle"]').send_keys(product_title)
 time.sleep(1)
 
-#Description
-driver.find_element_by_xpath('//*[@id="description"]').clear()
-driver.find_element_by_xpath('//*[@id="description"]').send_keys(description)
+#Product Tags
+driver.find_element_by_xpath('//*[@id="campaignGlobalOptions"]/div[1]/div[2]/div').send_keys(tags)
 time.sleep(1)
 
-#Product URL
-driver.find_element_by_xpath('//*[@id="url"]').send_keys(product_url)
+#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+#Category (Digital Art olmalı)
+
+
+
+#Product Description
+driver.find_element_by_xpath('//*[@id="campaignDescription"]').send_keys(description)
 time.sleep(1)
 
-#Publish Listing Button
-driver.find_element_by_xpath('//*[@id="app"]/div/div/div[3]/div[3]/div/button[2]/span').click()
-time.sleep(30)
+#Term and Conditions Button
+driver.find_element_by_xpath('//*[@id="campaignGlobalOptions"]/div[5]/div/label').click()
+time.sleep(1)
+
+#Process Button
+driver.find_element_by_xpath('//*[@id="processBulkUpload"]').click()
+time.sleep(10)
+
+
