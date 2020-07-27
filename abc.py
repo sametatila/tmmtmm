@@ -3,6 +3,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+#from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
 
 import os, sys
 import time,requests
@@ -44,7 +47,7 @@ def saveFile(content,filename):
 
 #Normal variables
 login_url = "https://www.redbubble.com/auth/login"
-username1 = "linkinqark1000@gmail.com"
+username1 = "sametatila@gmail.com"
 password = "Linkin.123"
 create_url = "https://www.redbubble.com/portfolio/images/53012017-the-cat-looking-for-the-future/duplicate"
 product_title = "Oha amk!"
@@ -53,34 +56,11 @@ description = "asdfsadfsdfsdfdf"
 design_path = "C:\ytw/az.png"
 bg_color = "#000000"
 
-
+#Run Chromium
 options = Options()
 options.binary_location = r"C:/ytw/browser/chrome.exe"
-
-"""options = Options()
-#options.binary_location("C:\ytw/browser/chrome.exe")
-options.add_argument("start-maximized")
-options.add_argument("--disable-gpu-vsync")
-options.add_argument("--remote-debugging-port=9222")"""
-driver = webdriver.Chrome(chrome_options=options)
-
-"""options = webdriver.ChromeOptions()
 options.add_argument("--mute-audio")
-options.add_argument('--disable-extensions')
-options.add_argument('--profile-directory=Default')
-options.add_argument("--incognito")
-options.add_argument("--disable-plugins-discovery");
-options.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
-#options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-#options.add_argument("--start-maximized")
-options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors", "safebrowsing-disable-download-protection", "safebrowsing-disable-auto-update", "disable-client-side-phishing-detection"])
-driver = webdriver.Chrome(chrome_options=options, executable_path=r'chromedriver.exe')
-driver.delete_all_cookies()
-driver.set_window_size(1100,1000)
-driver.set_window_position(0,0)"""
-
-#Run Chromium
-#driver = webdriver.Chrome('chromedriver.exe')
+driver = webdriver.Chrome(chrome_options=options)
 
 ###Start
 #Login Page
@@ -156,16 +136,6 @@ if audioBtnFound:
         print('Caught. Need to change proxy now')
 else:
     print('Button not found. This should not happen.')
-
-
-
-
-
-
-
-
-
-
 ###End
 
 ###Start
@@ -175,18 +145,36 @@ time.sleep(3)
 
 
 #Product Title
+driver.find_element_by_xpath('//*[@id="work_title_en"]').clear()
 driver.find_element_by_xpath('//*[@id="work_title_en"]').send_keys(product_title)
-time.sleep(1)
+time.sleep(2)
 
 #Product Tags
+driver.find_element_by_xpath('//*[@id="work_tag_field_en"]').clear()
 driver.find_element_by_xpath('//*[@id="work_tag_field_en"]').send_keys(tags)
-time.sleep(1)
+time.sleep(2)
 
 #Product Description
+driver.find_element_by_xpath('//*[@id="work_description_en"]').clear()
 driver.find_element_by_xpath('//*[@id="work_description_en"]').send_keys(description)
-time.sleep(1)
+time.sleep(2)
 
 #Design Path
 driver.find_element_by_xpath('//*[@id="select-image-base"]').send_keys(design_path)
-time.sleep(1)
+time.sleep(30)
 
+#I Have The Rights Button
+driver.find_element_by_xpath('//*[@id="rightsDeclaration"]').click()
+time.sleep(2)
+
+#Save Work Button
+driver.find_element_by_xpath('//*[@id="submit-work"]').click()
+time.sleep(10)
+
+#Success
+try:
+    element_present = EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[1]/span'))
+    WebDriverWait(driver, delayTime).until(element_present)
+finally:
+    driver.quit()
+#print "Successfully Created Your Design (product_title)"
