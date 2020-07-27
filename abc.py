@@ -54,7 +54,17 @@ design_path = "C:\ytw/az.png"
 bg_color = "#000000"
 
 
-options = webdriver.ChromeOptions()
+options = Options()
+options.binary_location = r"C:/ytw/browser/chrome.exe"
+
+"""options = Options()
+#options.binary_location("C:\ytw/browser/chrome.exe")
+options.add_argument("start-maximized")
+options.add_argument("--disable-gpu-vsync")
+options.add_argument("--remote-debugging-port=9222")"""
+driver = webdriver.Chrome(chrome_options=options)
+
+"""options = webdriver.ChromeOptions()
 options.add_argument("--mute-audio")
 options.add_argument('--disable-extensions')
 options.add_argument('--profile-directory=Default')
@@ -67,7 +77,7 @@ options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors",
 driver = webdriver.Chrome(chrome_options=options, executable_path=r'chromedriver.exe')
 driver.delete_all_cookies()
 driver.set_window_size(1100,1000)
-driver.set_window_position(0,0)
+driver.set_window_position(0,0)"""
 
 #Run Chromium
 #driver = webdriver.Chrome('chromedriver.exe')
