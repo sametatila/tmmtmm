@@ -4,7 +4,6 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-#from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 
 import os, sys
@@ -67,9 +66,6 @@ driver = webdriver.Chrome(chrome_options=options)
 driver.get(login_url)
 time.sleep(5)
 
-#Accept Cuki
-#driver.find_element_by_xpath('//*[@id="RB_React_Component_CookieBanner_1"]/div/div/div/button').click()
-
 #Login Info
 driver.find_element_by_xpath('//*[@id="ReduxFormInput1"]').send_keys(username1)
 time.sleep(3)
@@ -81,9 +77,7 @@ driver.find_element_by_xpath('//*[@id="RB_React_Component_LoginFormContainer_0"]
 time.sleep(3)
 
 
-
-
-#Gerizekali bölüm
+##Google Rechaptcha v3 Bot
 
 #googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
 #outeriframe = googleClass.find_element_by_tag_name('iframe')
