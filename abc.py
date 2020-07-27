@@ -176,5 +176,6 @@ try:
     element_present = EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[1]/div[2]/div/div/div/div[1]/div/div/div[1]/span'))
     WebDriverWait(driver, delayTime).until(element_present)
 finally:
-    driver.quit()
-#print "Successfully Created Your Design (product_title)"
+    print(element_present)
+    #driver.quit()
+
