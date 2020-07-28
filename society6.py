@@ -5,7 +5,7 @@ import time
 
 
 #Normal variables
-login_url = "https://www.designbyhumans.com/login"
+login_url = "https://society6.com/login"
 username1 = "sametatila@gmail.com"
 password = "Linkin.123"
 create_url = ""
@@ -27,13 +27,13 @@ driver.get(login_url)
 time.sleep(5)
 
 #Login Info
-driver.find_element_by_xpath('//*[@id="username_eca17db88d179"]').send_keys(username1)
+driver.find_element_by_xpath('//*[@id="email"]').send_keys(username1)
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="pwd_54cce17ba8283"]').send_keys(password)
+driver.find_element_by_xpath('//*[@id="password"]').send_keys(password)
 time.sleep(3)
 
 #Login Button
-driver.find_element_by_xpath('//*[@id="login_form"]/div/div[6]/div/div/span[2]/a/span').click()
+driver.find_element_by_xpath('//*[@id="login-form"]/div/button').click()
 time.sleep(5)
 ###End
 #PAYPAL OLMADAN YAPAMIYORUZ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

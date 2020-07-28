@@ -55,7 +55,7 @@ driver.find_element_by_xpath('//*[@id="pd_gt_product"]').click()
 time.sleep(5)
 
 #Load Collection Template
-driver.find_element_by_xpath('//*[@id="calculation-load-popup-button"]'.click()
+driver.find_element_by_xpath('//*[@id="calculation-load-popup-button"]').click()
 time.sleep(2)
 
 #Standard Temp
