@@ -9,6 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 import os, sys
 import time,requests
 from bs4 import BeautifulSoup
+from random import choice
+
+
 
 #Declare aq variables
 delayTime = 2
