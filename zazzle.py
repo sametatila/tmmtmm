@@ -45,14 +45,13 @@ def saveFile(content,filename):
 
 
 #Normal variables
-login_url = "https://displate.com/auth/signin"
+login_url = "https://www.zazzle.com/lgn/signin"
 username1 = "sametatila@gmail.com"
 password = "Linkin.123"
-create_url = "https://displate.com/file-upload"
+create_url = ""
 product_title = "Oha amk!"
 tags = "asd,asda,asdsad"
 description = "asdfsadfsdfsdfdf"
-product_url = "oha-amk"
 design_path = "C:\ytw/az.png"
 bg_color = "#000000"
 
@@ -68,10 +67,14 @@ driver.get(login_url)
 time.sleep(5)
 
 #Login Info
-driver.find_element_by_xpath('//*[@id="login-form"]/div[1]/div/input').send_keys(username1)
+driver.find_element_by_xpath('//*[@id="page_username-input"]').send_keys(username1)
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="login-form"]/div[2]/div/input').send_keys(password)
+driver.find_element_by_xpath('//*[@id="page_password-input"]').send_keys(password)
 time.sleep(3)
+
+#Login Button
+driver.find_element_by_xpath('//*[@id="page_signin"]').click()
+time.sleep(5)
 
 
 ##Google Rechaptcha v3 Bot
@@ -127,20 +130,4 @@ if audioBtnFound:
         print('Caught. Need to change proxy now')
 else:
     print('Button not found. This should not happen.')
-
-
-#Login Button
-driver.find_element_by_xpath('//*[@id="login-form"]/div[4]/button').click()
-time.sleep(5)
 ###End
-
-###Start
-#Product Create Page   
-driver.get(create_url)
-time.sleep(5)
-
-#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-#Design Upload
-driver.find_element_by_xpath('//*[@id="multiuploader"]/div/div[1]/div/div/button').send_keys(design_path)
-time.sleep(10)
-#Sadece JPG ve 4200px üzeri kabul ediyor.

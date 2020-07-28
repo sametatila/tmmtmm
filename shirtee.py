@@ -42,14 +42,16 @@ time.sleep(5)
 driver.get(create_url)
 time.sleep(3)
 
+#Galiba olmadı çözemedimXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #Design Path
 driver.find_element_by_xpath('//*[@id="upload-image-drop-zone"]/div[4]/a').send_keys(design_path)
 time.sleep(30)
 
 #Background Color
-driver.find_element_by_xpath('//*[@id="right-color-group"]/span[6]').click()
+driver.find_element_by_xpath('//*[@id="right-color-group"]/span[4]').click()
 time.sleep(1)
 
+#Kuki lerle alakalı bişe diyor çözemedimXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxx
 #First To The Next Step Button
 driver.find_element_by_xpath('//*[@id="pd_gt_product"]').click()
 time.sleep(5)

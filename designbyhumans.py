@@ -26,10 +26,11 @@ driver = webdriver.Chrome(chrome_options=options)
 driver.get(login_url)
 time.sleep(5)
 
+#XPATH'te Rastgele sayılar koymuşlar her sayfa yüklendiğinde değişiyorXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 #Login Info
-driver.find_element_by_xpath('//*[@id="username_eca17db88d179"]').send_keys(username1)
+driver.find_element_by_xpath('//*[@id="username_b174e88737910"]').send_keys(username1)
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="pwd_54cce17ba8283"]').send_keys(password)
+driver.find_element_by_xpath('//*[@id="pwd_b8107d84ca949"]').send_keys(password)
 time.sleep(3)
 
 #Login Button
