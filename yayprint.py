@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-import time
+import time, os
 
 
 #Normal variables
@@ -12,12 +12,12 @@ create_url = ""
 product_title = "Oha amk!"
 tags = "asd,asda,asdsad"
 description = "asdfsadfsdfsdfdf"
-design_path = "C:\ytw/az.png"
+design_path = os.getcwd() + "/az.png"
 bg_color = "#000000"
 
 #Run Chromium
 options = Options()
-options.binary_location = r"C:/ytw/browser/chrome.exe"
+options.binary_location = os.getcwd() + "/browser/chrome.exe"
 options.add_argument("--mute-audio")
 driver = webdriver.Chrome(chrome_options=options)
 

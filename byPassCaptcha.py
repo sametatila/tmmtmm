@@ -1,23 +1,27 @@
+
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 
 import os, sys
 import time,requests
 from bs4 import BeautifulSoup
 
-#Declare aq variables
 delayTime = 2
 audioToTextDelay = 10
 filename = 'test.mp3'
+byPassUrl = 'https://www.google.com/recaptcha/api2/demo'
 googleIBMLink = 'https://speech-to-text-demo.ng.bluemix.net/'
 
+option = webdriver.ChromeOptions()
+option.add_argument('--disable-notifications')
+option.add_argument("--mute-audio")
+# option.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+option.add_argument("user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1")
+
 def audioToText(mp3Path):
-    
+
     driver.execute_script('''window.open("","_blank");''')
     driver.switch_to.window(driver.window_handles[1])
 
@@ -31,7 +35,9 @@ def audioToText(mp3Path):
 
     # Audio to text is processing
     time.sleep(audioToTextDelay)
-    result = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div').text
+
+    text = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[6]/div/div/dialog').find_elements_by_tag_name('dd')
+    result = " ".join( [ each.text for each in text ] )
 
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
@@ -44,41 +50,12 @@ def saveFile(content,filename):
             handle.write(data)
 
 
-#Normal variables
-login_url = "https://displate.com/auth/signin"
-username1 = "sametatila@gmail.com"
-password = "Linkin.123"
-create_url = "https://displate.com/file-upload"
-product_title = "Oha amk!"
-tags = "asd,asda,asdsad"
-description = "asdfsadfsdfsdfdf"
-product_url = "oha-amk"
-design_path = "C:\ytw/az.png"
-bg_color = "#000000"
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=option)
+driver.get(byPassUrl)
 
-#Run Chromium
-options = Options()
-options.binary_location = os.getcwd() + "/browser/chrome.exe"
-options.add_argument("--mute-audio")
-driver = webdriver.Chrome(chrome_options=options)
-
-###Start
-#Login Page
-driver.get(login_url)
-time.sleep(5)
-
-#Login Info
-driver.find_element_by_xpath('//*[@id="login-form"]/div[1]/div/input').send_keys(username1)
-time.sleep(3)
-driver.find_element_by_xpath('//*[@id="login-form"]/div[2]/div/input').send_keys(password)
-time.sleep(3)
-
-
-##Google Rechaptcha v3 Bot
-
-#googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
-#outeriframe = googleClass.find_element_by_tag_name('iframe')
-#outeriframe.click()
+googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
+outeriframe = googleClass.find_element_by_tag_name('iframe')
+outeriframe.click()
 
 allIframesLen = driver.find_elements_by_tag_name('iframe')
 audioBtnFound = False
@@ -127,20 +104,3 @@ if audioBtnFound:
         print('Caught. Need to change proxy now')
 else:
     print('Button not found. This should not happen.')
-
-
-#Login Button
-driver.find_element_by_xpath('//*[@id="login-form"]/div[4]/button').click()
-time.sleep(5)
-###End
-
-###Start
-#Product Create Page   
-driver.get(create_url)
-time.sleep(5)
-
-#XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-#Design Upload
-driver.find_element_by_xpath('//*[@id="multiuploader"]/div/div[1]/div/div/button').send_keys(design_path)
-time.sleep(10)
-#Sadece JPG ve 4200px üzeri kabul ediyor.
