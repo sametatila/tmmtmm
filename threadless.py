@@ -1,5 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import time
+import os
 
 #Declare some variables
 login_url = "https://www.threadless.com/login/"
@@ -7,11 +9,15 @@ username = "sametatila@gmail.com"
 password = "Linkin.123!"
 create_url = "https://www.threadless.com/profile/artist_dashboard/artist-shop/products/create/"
 product_title = "Oha amk!"
-design_path = "C:\ytw/az.png"
+design_path = os.getcwd() + "/az.png"
 bg_color = "#000000"
 
 #Run Chromium
-driver = webdriver.Chrome('chromedriver.exe')
+options = Options()
+options.binary_location = r"C:/ytw/browser/chrome.exe"
+options.add_argument("--mute-audio")
+driver = webdriver.Chrome(chrome_options=options)
+
 
 
 ###Start
