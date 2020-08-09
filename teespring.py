@@ -61,6 +61,9 @@ bg_color = "#000000"
 options = Options()
 options.binary_location = r"C:/ytw/browser/chrome.exe"
 options.add_argument("--mute-audio")
+options.add_argument("start-maximized")
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('useAutomationExtension', False)
 driver = webdriver.Chrome(chrome_options=options)
 
 ###Start
@@ -76,10 +79,9 @@ time.sleep(3)
 
 
 #Google Rechaptcha v3 Bot
-
-#googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
-#outeriframe = googleClass.find_element_by_tag_name('iframe')
-#outeriframe.click()
+googleClass = driver.find_elements_by_class_name('recaptcha__container')[1]
+outeriframe = googleClass.find_element_by_tag_name('iframe')
+outeriframe.click()
 
 allIframesLen = driver.find_elements_by_tag_name('iframe')
 audioBtnFound = False
@@ -91,7 +93,7 @@ for index in range(len(allIframesLen)):
     driver.switch_to.frame(iframe)
     driver.implicitly_wait(delayTime)
     try:
-        audioBtn = driver.find_element_by_id('recaptcha-audio-button') or driver.find_element_by_id('recaptcha-anchor')
+        audioBtn = driver.find_element_by_id('recaptcha-audio-button') or driver.find_element_by_class_name('rc-button goog-inline-block rc-button-audio')
         audioBtn.click()
         audioBtnFound = True
         audioBtnIndex = index
