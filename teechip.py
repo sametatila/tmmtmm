@@ -68,17 +68,17 @@ driver.get(login_url)
 time.sleep(5)
 
 #Login Info
-driver.find_element_by_xpath('//*[@id="main-content"]/div/div/div[1]/form/div[1]/div/input').send_keys(username1)
-time.sleep(3)
-driver.find_element_by_xpath('//*[@id="main-content"]/div/div/div[1]/form/div[2]/div/input').send_keys(password)
-time.sleep(3)
+#driver.find_element_by_xpath('//*[@id="main-content"]/div/div/div[1]/form/div[1]/div/input').send_keys(username1)
+#time.sleep(3)
+#driver.find_element_by_xpath('//*[@id="main-content"]/div/div/div[1]/form/div[2]/div/input').send_keys(password)
+#time.sleep(3)
 
 
 #Google Rechaptcha v3 Bot
 
-#googleClass = driver.find_elements_by_class_name('g-recaptcha')[0]
-#outeriframe = googleClass.find_element_by_tag_name('iframe')
-#outeriframe.click()
+googleClass = driver.find_elements_by_class_name('g-recaptcha-response')[0]
+outeriframe = googleClass.find_element_by_xpath('//*[@id="recaptcha-anchor"]/div[3]')
+outeriframe.click()
 
 allIframesLen = driver.find_elements_by_tag_name('iframe')
 audioBtnFound = False
